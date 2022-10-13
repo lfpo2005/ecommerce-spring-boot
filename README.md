@@ -3,18 +3,17 @@
      E-commerce SpringBoot
      </h1>
 
-<p align="center"> 🚧  Under development...  🚧</p> <br>
+<p align="center"> 🚧  Em desenvolvimento...  🚧</p> <br>
 
-## Description
-<p>E-commerce website design java training</p>
-<p> API for user registration Course Java Training </p>
-
+## Descrição
+<p>Projeto da Mentoria Java-Treinamento</p>
 
 
-### Features 
---> https://trello.com/b/uFdzdFA6/ecommerce-springboot
 ##### BackEnd
-- [ ] Creation of classes and database modeling
+- [x] Criação das entidades
+- [x] Criando testes dos Acessos
+- [x] Criação dos Acessos
+- [x]  Spring Security
 
 ##### FrontEnd
 
