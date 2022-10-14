@@ -1,0 +1,41 @@
+version: "3.9"
+services:
+  db:
+    image: postgres:11
+    container_name: ecommerce-java-db
+    restart: always
+    volumes:
+      - ./extra/ecommerce-db:/var/lib/postgresql/data
+    environment:
+      - TZ=America/Sao_Paulo
+      - POSTGRES_DB=ecommerce-java-db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_ROOT_HOST='%'
+    ports:
+      - 5432:5432
+    expose:
+      - 5432
+    networks:
+      - java-network
+
+  ecommerce-java:
+    image: lfpo2005/ecommerce-java
+    build: .
+    restart: always
+    environment:
+      TZ: America/Sao_Paulo
+      SPRING.DATASOURCE.URL: jdbc:postgresql://db:5432/ecommerce-java-db
+      SPRING.DATASOURCE.URL.USERNAME: postgres
+      SPRING.DATASOURCE.URL.PASSWORD: postgres
+    ports:
+      - 8081:8080
+    command: mvn spring-boot:run
+    depends_on:
+      - db
+    networks:
+      - java-network
+
+networks:
+  java-network:
+    driver: bridge
